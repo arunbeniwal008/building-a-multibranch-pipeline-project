@@ -8,7 +8,7 @@ pipeline
         stage('build')
         {
             steps{
-                sh "echo ott#4u@pmsl | sudo -S bundle install" 
+                sh "echo ott#4u@pmsl | sudo bundle install" 
                 //sh "npm install"
                 sh "rm -rf `find -type d -name .svn`"
                 sh "npm run build --env ${env.BRANCH_NAME}"
