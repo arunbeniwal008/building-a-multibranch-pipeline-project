@@ -1,38 +1,35 @@
-pipeline {
+pipeline
+{
     agent any
     environment {
-        CI = 'true'
+        CI = false
     }
-    stages {
-        stage('Build') {
-            steps {
-                sh 'npm install'
+    stages{
+        stage('build')
+        {
+            steps{
+                sh "echo ott#4u@pmsl | sudo -S bundle install" 
+                //sh "npm install"
+                sh "rm -rf `find -type d -name .svn`"
+                sh "npm run build --env ${env.BRANCH_NAME}"
+                //sh "npm run build:${env.BRANCH_NAME}"
             }
         }
-        stage('Test') {
+        stage("Upload") {
             steps {
-                sh './jenkins/scripts/test.sh'
+                withAWS(region:"ap-southeast-1", credentials:"f88ffd9b-ba03-40ff-bf5a-ac95fd7f05f5") {
+                    s3Upload(file:"build", bucket:"stg-web.planetcast.in", path:"${env.BRANCH_NAME}")
+
+                }    
+
             }
         }
-        stage('Deliver for development') {
-            when {
-                branch 'development'
-            }
-            steps {
-                sh './jenkins/scripts/deliver-for-development.sh'
-                input message: 'Finished using the web site? (Click "Proceed" to continue)'
-                sh './jenkins/scripts/kill.sh'
-            }
-        }
-        stage('Deploy for production') {
-            when {
-                branch 'production'
-            }
-            steps {
-                sh './jenkins/scripts/deploy-for-production.sh'
-                input message: 'Finished using the web site? (Click "Proceed" to continue)'
-                sh './jenkins/scripts/kill.sh'
-            }
+    }
+    post {
+        always {
+            // delete the workspace
+            sh "chmod -R 777 ."
+            deleteDir() 
         }
     }
 }
