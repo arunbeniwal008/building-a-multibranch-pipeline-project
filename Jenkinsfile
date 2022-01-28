@@ -9,6 +9,5 @@ peline {
                 sh 'npm install'
             }
         }
-     
     }
 }
