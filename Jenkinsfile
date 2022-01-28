@@ -23,8 +23,6 @@ pipeline
                 }    
 
             }
-        }
-    }
     post {
         always {
             // delete the workspace
