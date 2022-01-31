@@ -25,8 +25,9 @@ pipeline
     }
     post {
         always {
-            emailext attachLog: true, body: 'Extended email', subject: 'Extended email', to: 'arunk.sw@planetc.net'
-            mail(subject: 'Production Build', body: 'New Deployment to Production', to: 'arunk.sw@planetc.net')
+            emailext attachLog: true, body: 'Extended email', subject: 'Extended email', to: 'arunbeniwal2010@gmail.com'
+            mail(subject: 'Production Build', body: 'New Deployment to Production', to: 'arunbeniwal2010@gmail.com')
+            //emailext body: 'A Test EMail', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Test'
             sh "chmod -R 777 ."
             deleteDir() 
         }
