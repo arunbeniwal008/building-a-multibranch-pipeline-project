@@ -4,24 +4,22 @@ pipeline
     environment {
         CI = false
     }
-    nodejs('npm') {
-
-   //here your npm commands p.e.
-
-   npm install
-   npm run prod
-}
 
   stages {
        stage('build')
         {
             steps{
+                    nodejs('npm') {
+                npm install
+                npm run prod
+                    }
                 //sh "echo arun@123 | sudo bundle install" 
                 sh "npm install"
                 sh "rm -rf `find -type d -name .git`"
                 sh "npm run build --env ${env.BRANCH_NAME}"
                 //sh "npm run build:${env.BRANCH_NAME}"
             }
+        }
         }
        /* stage("Upload") {
             steps {
