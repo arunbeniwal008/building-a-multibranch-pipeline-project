@@ -4,15 +4,9 @@ pipeline
     environment {
         CI = false
     }
-    tools {nodejs "nodejs"}
 
   stages {
-    stage('Example') {
-      steps {
-        sh 'npm config ls'
-      }
-    }
-    stage('build')
+       stage('build')
         {
             steps{
                 //sh "echo arun@123 | sudo bundle install" 
