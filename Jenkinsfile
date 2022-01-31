@@ -4,6 +4,13 @@ pipeline
     environment {
         CI = false
     }
+    nodejs('npm'){
+
+   //here your npm commands p.e.
+
+   npm install
+   npm run prod
+}
 
   stages {
        stage('build')
