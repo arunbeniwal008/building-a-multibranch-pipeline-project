@@ -17,7 +17,7 @@ pipeline
         }
         stage("Upload") {
             steps {
-                withAWS(region:"ap-southeast-1", credentials:"AWS-ARUN") {
+                withAWS(region:"ap-south-1", credentials:"AWS-ARUN") {
                     s3Upload(file:"build", bucket:"aruns3jenkins", path:"${env.BRANCH_NAME}")
                 }    
 
