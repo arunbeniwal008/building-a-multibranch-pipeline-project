@@ -8,9 +8,9 @@ pipeline
         stage('build')
         {
             steps{
-                sh "echo arun@123 | sudo bundle install" 
-                //sh "npm install"
-                sh "rm -rf `find -type d -name .svn`"
+                //sh "echo arun@123 | sudo bundle install" 
+                sh "npm install"
+                sh "rm -rf `find -type d -name .git`"
                 sh "npm run build --env ${env.BRANCH_NAME}"
                 //sh "npm run build:${env.BRANCH_NAME}"
             }
