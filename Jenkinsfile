@@ -10,6 +10,8 @@ pipeline
             steps{
                 //sh "echo ott#4u@pmsl | sudo -S bundle install" 
                 sh "npm install"
+                sh "npm fund"
+                sh "npm audit fix"
                 sh "rm -rf `find -type d -name .git`"
                 sh "npm run build --env ${env.BRANCH_NAME}"
                 //sh "npm run build:${env.BRANCH_NAME}"
