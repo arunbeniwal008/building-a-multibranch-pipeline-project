@@ -4,7 +4,7 @@ pipeline
     environment {
         CI = false
     }
-    nodejs('npm'){
+    nodejs('npm') {
 
    //here your npm commands p.e.
 
