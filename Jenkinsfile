@@ -16,7 +16,7 @@ pipeline
                 //sh "npm run build:${env.BRANCH_NAME}"
             }
         }
-        stage("Upload") {
+       /* stage("Upload") {
             steps {
                 withAWS(region:"ap-southeast-1", credentials:"f88ffd9b-ba03-40ff-bf5a-ac95fd7f05f5") {
                     s3Upload(file:"build", bucket:"stg-web.planetcast.in", path:"${env.BRANCH_NAME}")
@@ -24,7 +24,7 @@ pipeline
                 }    
 
             }
-        }
+        } */
     }
     post {
         always {
