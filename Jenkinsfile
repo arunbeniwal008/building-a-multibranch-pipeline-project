@@ -23,11 +23,9 @@ pipeline
 
             }
         }
-        stage('Email Notification') {
-            steps {
-                emailext attachLog: true, body: 'Extended email', subject: 'Extended email', to: 'arunk.sw@planetc.net'
-      }
-    }
+
+        
+        
     post {
         always {
             // delete the workspace
