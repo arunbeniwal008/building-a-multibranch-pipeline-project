@@ -10,7 +10,8 @@ pipeline
     stage('Example') {
       steps {
         sh 'npm config ls'
-
+      }
+    }
     stage('build')
         {
             steps{
