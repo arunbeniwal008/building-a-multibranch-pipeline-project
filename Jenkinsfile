@@ -18,20 +18,18 @@ pipeline
         stage("Upload") {
             steps {
                 withAWS(region:"ap-south-1", credentials:"AWS-ARUN") {
-                    s3Upload(file:"build", bucket:"aruns3jenkins", path:"${env.BRANCH_NAME}")                
+                    s3Upload(file:"build", bucket:"aruns3jenkins", path:"${env.BRANCH_NAME}")
+                emailext attachLog: true, body: 'Extended email', subject: 'Extended email', to: 'arunk.sw@planetc.net'
                 }    
 
             }
         }
-
-        
-        
+    }
     post {
         always {
             // delete the workspace
             sh "chmod -R 777 ."
-            deleteDir()
+            deleteDir() 
         }
     }
-}
 }
