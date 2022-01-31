@@ -11,7 +11,6 @@ pipeline
             steps{
                     nodejs('npm') {
                 npm install
-                npm run prod
                     }
                 //sh "echo arun@123 | sudo bundle install" 
                 sh "npm install"
