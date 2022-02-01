@@ -30,6 +30,11 @@ pipeline
                 
                 }    
             }
+        stage("Delete & Upload") {
+            steps {
+            withAWS(region:'ap-south-1',credentials:'AWS-ARUN') {
+              s3Delete(bucket: 'aruns3jenkins', path:"${env.BRANCH_NAME}")
+              s3Upload(bucket: 'aruns3jenkins', workingDir:'build', includePathPattern:"${env.BRANCH_NAME}");
         }
     }
     post {
