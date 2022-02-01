@@ -8,7 +8,6 @@ pipeline
         stage('build')
         {
             steps{
-                //sh "echo ott#4u@pmsl | sudo -S bundle install" 
                 sh "npm install"
                 sh "npm fund"
                 sh "npm audit fix"
@@ -35,7 +34,7 @@ pipeline
     }
     post {
         always {
-            //emailext(attachLog: true, body: 'Extended email', subject: 'Extended email', to: 'arunk.sw@planetc.net')
+            emailext(attachLog: true, body: 'Jenkins Build ', subject: 'Extended email', to: 'arunk.sw@planetc.net')
             mail(subject: 'Production Build', body: 'New Deployment to Production', to: 'arunk.sw@planetc.net')
             sh "chmod -R 777 ."
             deleteDir() 
