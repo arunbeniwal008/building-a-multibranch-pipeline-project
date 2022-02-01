@@ -34,7 +34,7 @@ pipeline
     }
     post {
         always {
-            //emailext(attachLog: true, body: 'Jenkins Build ', subject: 'Extended email', to: 'arunk.sw@planetc.net')
+            emailext(attachLog: true, body: 'Jenkins Build ', subject: 'Extended email', to: 'arunk.sw@planetc.net')
             mail(subject: 'Production Build', body: 'New Deployment to Production', to: 'arunk.sw@planetc.net')
             sh "chmod -R 777 ."
             deleteDir() 
