@@ -21,6 +21,10 @@ pipeline
             steps {
                 withAWS(region:"ap-south-1", credentials:"AWS-ARUN") {
                     s3Upload(file:"build", bucket:"aruns3jenkins", path:"${env.BRANCH_NAME}")
+                    
+                withAWS(region:"ap-southeast-1", credentials:"AWS-Planetcast") {
+                    s3Upload(file:"build", bucket:"stg-web.planetcast.in", path:"${env.BRANCH_NAME}")
+                
                 }    
             }
         }
