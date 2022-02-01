@@ -17,7 +17,7 @@ pipeline
                 //sh "npm run build:${env.BRANCH_NAME}"
             }
         }
-        stage("Upload Data On S3@arun") {
+        stage("Data On S3@arun") {
             steps {
                 withAWS(region:"ap-south-1", credentials:"AWS-ARUN") {
                     s3Upload(file:"build", bucket:"aruns3jenkins", path:"${env.BRANCH_NAME}")
