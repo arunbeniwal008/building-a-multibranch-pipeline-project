@@ -27,8 +27,7 @@ pipeline
         /*stage("Upload @planetcast") {
             steps {
                 withAWS(region:"ap-southeast-1", credentials:"AWS-Planetcast") {
-                    //s3Delete(bucket:"aruns3jenkins", path:'**/*')
-                    s3Upload(file:"build", bucket:"stg-web.planetcast.in", path:"${env.BRANCH_NAME}")
+                   s3Upload(file:"build", bucket:"stg-web.planetcast.in", path:"${env.BRANCH_NAME}")
                 }
                 }    
             }*/
