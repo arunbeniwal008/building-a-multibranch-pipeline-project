@@ -19,7 +19,7 @@ pipeline
         stage("Data On S3@arun") {
             steps {
                 withAWS(region:"ap-south-1", credentials:"AWS-ARUN") {
-                    s3Delete(bucket:"aruns3jenkins", path:'*')
+                    s3Delete(bucket:"aruns3jenkins", path:"${env.BRANCH_NAME}")
                     s3Upload(file:"build", bucket:"aruns3jenkins", path:"${env.BRANCH_NAME}")
                 }
             }
