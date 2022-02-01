@@ -27,7 +27,7 @@ pipeline
             steps {
                 withAWS(region:"ap-southeast-1", credentials:"AWS-Planetcast") {
                     s3Upload(file:"build", bucket:"stg-web.planetcast.in", path:"${env.BRANCH_NAME}")
-                
+                }
                 }    
             }
         stage("Delete & Upload") {
